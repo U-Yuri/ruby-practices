@@ -1,11 +1,11 @@
 1.upto(20) do |num|
   if num % 3 == 0 && num % 5 == 0
-      puts "FizzBuzz"
+   puts "FizzBuzz"
   elsif num % 3 == 0
-      puts "Fizz"
+    puts "Fizz"
   elsif num % 5 == 0
-      puts "Buzz"
+    puts "Buzz"
   else 
-      puts num
+    puts num
   end
 end
