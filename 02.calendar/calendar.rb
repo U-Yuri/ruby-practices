@@ -1,8 +1,8 @@
+require 'optparse'
 require 'date'
 day = Date.today
 year = day.year
 month = day.month
-require 'optparse'
 opt = OptionParser.new
 opt.on('-y VAL') {|v| year = v.to_i }
 opt.on('-m VAL') {|v| month = v.to_i }
