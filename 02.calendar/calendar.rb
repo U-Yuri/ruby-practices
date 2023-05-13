@@ -24,15 +24,13 @@ day_of_week = start_of_date.wday
 today = day.day
 (start_of_date..end_of_date).each do |day|
   day_colomn = "#{day.day}".rjust(2)
-  case 
-  when day.day == today
+  if day.day == today
     print "\x1B[31;1m" + day_colomn + "\x1B[37;m" + " "
   else 
     print "\x1B[36;1m" + day_colomn + "\x1B[37;m" + " "
   end
 
-  case
-  when day_of_week%7 == 6
+  if day_of_week%7 == 6
     print "\n"
   end
 
