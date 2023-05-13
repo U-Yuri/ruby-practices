@@ -13,8 +13,8 @@ end_of_date = Date.new(year, month, -1).day
 start_of_date = Date.new(year, month, 1).wday
 
 day_of_week = 0
-(0..start_of_date).each do |wday|
-  print " ".ljust(2)
+(0..start_of_date-1).each do |wday|
+  print "   "
 end
 
 # day_of_week = 0
