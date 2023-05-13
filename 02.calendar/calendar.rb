@@ -28,10 +28,9 @@ end
 # end
 
 today = day.day
-num = 0
 (1..end_of_date).each do |day|
   case 
-  when day == today && num < 10 && (day_of_week)%7 == 0
+  when day == today && day < 10 && (day_of_week)%7 == 0
     print "\x1B[31;1m#{day}\x1B[37;m".rjust(15)
   when day == today && day < 10 
     print "\x1B[31;1m#{day}\x1B[37;m".rjust(16)
