@@ -12,61 +12,18 @@ puts "日 月 火 水 木 金 土"
 end_of_date = Date.new(year, month, -1).day
 start_of_date = Date.new(year, month, 1).wday
 
-day_of_week = 0
 (0..start_of_date-1).each do |wday|
   print "   "
 end
 
-# day_of_week = 0
-# while day_of_week < start_of_date
-#   day_of_week += 1
-#   if day_of_week == 1
-#     print " ".rjust(2)
-#   else
-#     print " ".rjust(3)
-#   end
-# end
-
+day_of_week = start_of_date
 today = day.day
 (1..end_of_date).each do |day|
-  case 
-  when day == today && day < 10 && (day_of_week)%7 == 0
-    print "\x1B[31;1m#{day}\x1B[37;m".rjust(15)
-  when day == today && day < 10 
-    print "\x1B[31;1m#{day}\x1B[37;m".rjust(16)
-  when day == today
-    print "\x1B[31;1m#{day}\x1B[37;m".rjust(15)
-  when (day_of_week)%7 == 0 && day < 10
-    print "\x1B[36;1m#{day}\x1B[37;m".rjust(15)
-  when (day_of_week)%7 == 0 
-    print "\x1B[36;1m#{day}\x1B[37;m"
-  else 
-    print " " + "\x1B[36;1m#{day}\x1B[37;m".rjust(15)
+  case
+  when day_of_week%7 == 6
+    puts day
+  else
+    print day
   end
-  if ((day_of_week+=1)%7 == 0)
-    puts
-  end
-end
-
-# today = day.day
-# num = 0
-# while num < end_of_date do
-#   num += 1
-#   case 
-#   when num == today && num < 10 && (day_of_week)%7 == 0
-#     print "\x1B[31;1m#{num}\x1B[37;m".rjust(15)
-#   when num == today && num < 10 
-#     print "\x1B[31;1m#{num}\x1B[37;m".rjust(16)
-#   when num == today
-#     print "\x1B[31;1m#{num}\x1B[37;m".rjust(15)
-#   when (day_of_week)%7 == 0 && num < 10
-#     print "\x1B[36;1m#{num}\x1B[37;m".rjust(15)
-#   when (day_of_week)%7 == 0 
-#     print "\x1B[36;1m#{num}\x1B[37;m"
-#   else 
-#     print " " + "\x1B[36;1m#{num}\x1B[37;m".rjust(15)
-#   end
-#   if ((day_of_week+=1)%7 == 0)
-#     puts
-#   end
-# end
+  day_of_week = day_of_week + 1
+ end
