@@ -26,11 +26,8 @@ today = day.day
   day_colomn = day.day.to_s.rjust(2)
   print (day.day == today) ? "\x1B[31;1m" : "\x1B[36;1m"
   print day_colomn + "\x1B[37;m" + " "
-
-  if day_of_week%7 == 6
-    print "\n"
-  end
-
+  print "\n" if day.saturday?
+   
   print (day.day == today) ? "\x1B[31;1m" : "\x1B[36;1m"
 
   day_of_week = day_of_week + 1
