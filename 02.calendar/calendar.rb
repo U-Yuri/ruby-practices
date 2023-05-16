@@ -1,9 +1,9 @@
 require 'optparse'
 require 'date'
 
-day = Date.today
-year = day.year
-month = day.month
+today = Date.today
+year = today.year
+month = today.month
 
 opt = OptionParser.new
 opt.on('-y VAL') {|v| year = v.to_i }
@@ -21,14 +21,12 @@ start_of_date = Date.new(year, month, 1)
 end
 
 day_of_week = start_of_date.wday
-today = day.day
+
 (start_of_date..end_of_date).each do |day|
   day_colomn = day.day.to_s.rjust(2)
-  print (day.day == today) ? "\x1B[31;1m" : "\x1B[36;1m"
+  print (day == today) ? "\x1B[31;1m" : "\x1B[36;1m"
   print day_colomn + "\x1B[37;m" + " "
   print "\n" if day.saturday?
    
-  print (day.day == today) ? "\x1B[31;1m" : "\x1B[36;1m"
-
   day_of_week = day_of_week + 1
  end
