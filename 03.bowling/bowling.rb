@@ -27,7 +27,7 @@ frames.each do |frame|
   if frame[0] == 10 # strike
     point += frame[0] + next_array[0] + next_array[1]
   elsif frame.sum == 10 # spare
-    point += frame.sum + 10
+    point += frame.sum + next_array[0]
   else
     point += frame.sum
   end
