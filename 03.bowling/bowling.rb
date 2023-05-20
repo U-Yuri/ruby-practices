@@ -25,6 +25,8 @@ frames.each do |frame|
   # debugger
   next_array = frames[index + 1]
   case
+  when frame.count == 11
+    point += frame[0] + next_array[0]
   when frame[0] == 10 # strike
     point += frame[0] + next_array[0] + next_array[1]
   when frame.sum == 10 # spare
