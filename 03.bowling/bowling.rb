@@ -25,15 +25,16 @@ frames.each do |frame|
   # debugger
   next_array = frames[index + 1]
   case
-  when frame.count == 11
+  when frame.count == 11 && (index == 9 || index == 10)
     point += frame[0] + next_array[0]
   when frame[0] == 10 # strike
     point += frame[0] + next_array[0] + next_array[1]
   when frame.sum == 10 # spare
     point += frame.sum + next_array[0]
-  when
+  else 
     point += frame.sum
   end
+  print "index=#{index} frame=#{frame} point=#{point}\n"
   index += 1
 end
 puts point
