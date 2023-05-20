@@ -24,11 +24,12 @@ index = 0
 frames.each do |frame|
   # debugger
   next_array = frames[index + 1]
-  if frame[0] == 10 # strike
+  case
+  when frame[0] == 10 # strike
     point += frame[0] + next_array[0] + next_array[1]
-  elsif frame.sum == 10 # spare
+  when frame.sum == 10 # spare
     point += frame.sum + next_array[0]
-  else
+  when
     point += frame.sum
   end
   index += 1
