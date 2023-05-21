@@ -36,5 +36,6 @@ frames.each do |frame|
   end
   print "index=#{index} frame=#{frame} point=#{point}\n"
   index += 1
+  break if index > 9
 end
 puts point
