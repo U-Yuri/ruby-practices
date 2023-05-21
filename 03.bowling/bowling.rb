@@ -1,5 +1,5 @@
 # ボウリングスコアプログラム
-# require 'debug'
+require 'debug'
 
 score = ARGV[0]
 scores = score.split(',')
@@ -21,21 +21,21 @@ p frames
 
 point = 0
 index = 0
+# debugger
 frames.each do |frame|
   # debugger
   next_array = frames[index + 1]
+  
   case
-  when frame[0] == 10 && index == 9
-    point += frame.sum + next_array[0]
-  when frame[0] == 10 # strike
-    point += frame[0] + next_array[0] + next_array[1]
-  when frame.sum == 10 # spare
-    point += frame.sum + next_array[0]
+  when frame[0] == 10 && index < 9
+    # debugger
+      point += frame[0] + next_array[0] + next_array[1]
+  when frame.sum == 10 && index < 9
+      point += frame.sum + next_array[0] if index < 9
   else 
     point += frame.sum
   end
   print "index=#{index} frame=#{frame} point=#{point}\n"
   index += 1
- break if index > 9
 end
 puts point
