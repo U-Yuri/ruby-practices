@@ -25,8 +25,8 @@ frames.each do |frame|
   # debugger
   next_array = frames[index + 1]
   case
-  when frame.count == 11 && (index == 9 || index == 10)
-    point += frame[0] + next_array[0]
+  when frame[0] == 10 && index == 9
+    point += frame.sum + next_array[0]
   when frame[0] == 10 # strike
     point += frame[0] + next_array[0] + next_array[1]
   when frame.sum == 10 # spare
@@ -36,6 +36,6 @@ frames.each do |frame|
   end
   print "index=#{index} frame=#{frame} point=#{point}\n"
   index += 1
-  break if index > 9
+ break if index > 9
 end
 puts point
