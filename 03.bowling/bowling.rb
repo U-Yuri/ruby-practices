@@ -27,10 +27,10 @@ frames.each do |frame|
   point += frame.sum
   if frame[0] == 10 && index < 9
     point += next_array[0]
-    point = if next_array[0] == 10
-              point + next_next_array[0]
+    point += if next_array[0] == 10
+              next_next_array[0]
             else
-              point + next_array[1]
+              next_array[1]
             end
 
   elsif frame.sum == 10 && index < 9
