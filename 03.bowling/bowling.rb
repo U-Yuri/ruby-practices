@@ -36,7 +36,6 @@ frames.each do |frame|
     point += next_array_1[0]
   end
 
-  print "index=#{index} frame=#{frame} point=#{point}\n"
   index += 1
 end
 puts point
