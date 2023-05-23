@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ボウリングスコアプログラム
 
 score = ARGV[0]
@@ -22,13 +24,12 @@ point = 0
 index = 0
 frames.each do |frame|
   next_array = frames[index + 1]
-  
-  case
-  when frame[0] == 10 && index < 9
-      point += frame[0] + next_array[0] + next_array[1]
-  when frame.sum == 10 && index < 9
-      point += frame.sum + next_array[0] if index < 9
-  else 
+
+  if frame[0] == 10 && index < 9
+    point += frame[0] + next_array[0] + next_array[1]
+  elsif frame.sum == 10 && index < 9
+    point += frame.sum + next_array[0] if index < 9
+  else
     point += frame.sum
   end
 
