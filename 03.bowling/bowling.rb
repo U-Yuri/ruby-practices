@@ -22,17 +22,19 @@ end
 point = 0
 index = 0
 frames.each do |frame|
-  next_array_1 = frames[index + 1]
-  next_array_2 = frames[index + 2]
+  next_array = frames[index + 1]
+  next_next_array = frames[index + 2]
   point += frame.sum
   if frame[0] == 10 && index < 9
-    if next_array_1[0] == 10 
-      point += next_array_1[0] + next_array_2[0]
-    else
-      point += next_array_1[0] + next_array_1[1]
-    end
+    point += next_array[0]
+    point = if next_array[0] == 10
+              point + next_next_array[0]
+            else
+              point + next_array[1]
+            end
+
   elsif frame.sum == 10 && index < 9
-    point += next_array_1[0]
+    point += next_array[0]
   end
 
   index += 1
