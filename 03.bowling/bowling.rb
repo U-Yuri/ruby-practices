@@ -18,7 +18,6 @@ frames = []
 shots.each_slice(2) do |s|
   frames << s
 end
-p frames
 
 point = 0
 index = 0
