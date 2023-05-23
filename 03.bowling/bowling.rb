@@ -2,8 +2,6 @@
 
 # ボウリングスコアプログラム
 
-require 'debug'
-
 score = ARGV[0]
 scores = score.split(',')
 shots = []
@@ -25,7 +23,6 @@ p frames
 point = 0
 index = 0
 frames.each do |frame|
-  # debugger
   next_array = frames[index + 1]
   next_array_2 = frames[index + 2]
   point += frame.sum
