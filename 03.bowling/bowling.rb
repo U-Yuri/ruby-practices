@@ -21,20 +21,20 @@ end
 
 point = 0
 frames.each_with_index do |frame, number_of_times|
-  next_array = frames[number_of_times + 1]
+  next_score = frames[number_of_times + 1]
   next_next_array = frames[number_of_times + 2]
   point += frame.sum
   all_pin = 10
   if frame[0] == all_pin && number_of_times < 9
-    point += next_array[0]
-    point += if next_array[0] == all_pin
+    point += next_score[0]
+    point += if next_score[0] == all_pin
                next_next_array[0]
              else
-               next_array[1]
+               next_score[1]
              end
 
   elsif frame.sum == all_pin && number_of_times < 9
-    point += next_array[0]
+    point += next_score[0]
   end
 end
 
