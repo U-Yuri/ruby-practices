@@ -5,10 +5,10 @@
 score = ARGV[0]
 scores = score.split(',')
 shots = []
-All_PIN = 10
+ALL_PIN = 10
 scores.each do |s|
   if s == 'X'
-    shots << All_PIN
+    shots << ALL_PIN
     shots << 0
   else
     shots << s.to_i
@@ -21,20 +21,20 @@ shots.each_slice(2) do |s|
 end
 
 point = 0
-frames.each_with_index do |frame, number_of_times|
-  next_score = frames[number_of_times + 1]
-  next_next_score = frames[number_of_times + 2]
+frames.each_with_index do |frame, index|
+  next_frame = frames[index + 1]
+  next_next_frame = frames[index + 2]
   point += frame.sum
-  if frame[0] == All_PIN && number_of_times < 9
-    point += next_score[0]
-    point += if next_score[0] == All_PIN
-               next_next_score[0]
+  if frame[0] == ALL_PIN && index < 9
+    point += next_frame[0]
+    point += if next_frame[0] == ALL_PIN
+               next_next_frame[0]
              else
-               next_score[1]
+               next_frame[1]
              end
 
-  elsif frame.sum == All_PIN && number_of_times < 9
-    point += next_score[0]
+  elsif frame.sum == ALL_PIN && index < 9
+    point += next_frame[0]
   end
 end
 
