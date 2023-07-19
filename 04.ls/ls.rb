@@ -72,7 +72,7 @@ def other_print(file_path, file)
   print file
 end
 
-def make_cell_l(files)
+def make_line(files)
   block_sum(files)
   files.each do |file|
     if File.ftype(file.to_s) == 'directory'
@@ -100,7 +100,7 @@ cols = (0..COL_NUM - 1)
 rows = (0..row_num - 1)
 
 if option[:l]
-  make_cell_l(files)
+  make_line(files)
 else
   make_cell(rows, cols, files_ordered)
 end
