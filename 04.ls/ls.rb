@@ -23,12 +23,10 @@ def make_cell(rows, cols, files_ordered)
 end
 
 def block_sum(files)
-  block_total = 0
-  files.each do |file|
-    block_num = File.stat(file.to_s).blocks
-    block_total += block_num
+  block_num = files.sum do |file|
+    File.stat(file.to_s).blocks
   end
-  puts "total #{block_total}"
+  puts "total #{block_num}"
 end
 
 def make_permission(file_path, permission_num, permission_type)
