@@ -40,15 +40,15 @@ def make_permission(file_path, permission_num, permission_type)
 end
 
 def all_permission(file_path)
-  (0..8).each do |num|
+  8.times do |num|
     permission_num = 8 - num
-    permission_type = if num % 3 == 0
-      'r'
-    elsif num % 3 == 1
-      'w'
-    elsif num % 3 == 2
-      'x'
-    end
+    permission_type = if (num % 3).zero?
+                        'r'
+                      elsif num % 3 == 1
+                        'w'
+                      elsif num % 3 == 2
+                        'x'
+                      end
     make_permission(file_path, permission_num, permission_type)
   end
 end
