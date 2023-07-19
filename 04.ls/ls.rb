@@ -40,15 +40,17 @@ def make_permission(file_path, permission_num, permission_type)
 end
 
 def all_permission(file_path)
-  make_permission(file_path, 8, 'r')
-  make_permission(file_path, 7, 'w')
-  make_permission(file_path, 6, 'x')
-  make_permission(file_path, 5, 'r')
-  make_permission(file_path, 4, 'w')
-  make_permission(file_path, 3, 'x')
-  make_permission(file_path, 2, 'r')
-  make_permission(file_path, 1, 'w')
-  make_permission(file_path, 0, 'x')
+  (0..8).each do |num|
+    permission_num = 8 - num
+    permission_type = if num % 3 == 0
+      'r'
+    elsif num % 3 == 1
+      'w'
+    elsif num % 3 == 2
+      'x'
+    end
+    make_permission(file_path, permission_num, permission_type)
+  end
 end
 
 def other_print(file_path, file)
