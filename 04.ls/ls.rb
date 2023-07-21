@@ -72,7 +72,7 @@ def other_print(file_path, file)
   print file
 end
 
-def make_line(files, files_ordered)
+def make_line(files_ordered)
   block_sum(files_ordered)
   files_ordered.each do |file|
     if File.ftype(file.to_s) == 'directory'
@@ -99,7 +99,7 @@ row_num = (files.size / COL_NUM.to_f).ceil
 cols = (0..COL_NUM - 1)
 rows = (0..row_num - 1)
 
-if option[:l] && [:a]
+if option[:l] && option[:a]
   make_line(files, files_ordered)
 elsif option[:l]
   make_line(files)
