@@ -2,7 +2,6 @@
 
 require 'etc'
 require 'optparse'
-require 'debug'
 
 opt = OptionParser.new
 option = {}
@@ -88,7 +87,7 @@ def make_line(files_ordered)
     puts
   end
 end
-# debugger
+
 flags = option[:a] ? File::FNM_DOTMATCH : 0
 files = Dir.glob('*', flags)
 
