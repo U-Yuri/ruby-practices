@@ -2,6 +2,7 @@
 
 require 'etc'
 require 'optparse'
+require 'debug'
 
 opt = OptionParser.new
 option = {}
@@ -87,7 +88,7 @@ def make_line(files_ordered)
     puts
   end
 end
-
+# debugger
 flags = option[:a] ? File::FNM_DOTMATCH : 0
 files = Dir.glob('*', flags)
 
@@ -99,10 +100,8 @@ row_num = (files.size / COL_NUM.to_f).ceil
 cols = (0..COL_NUM - 1)
 rows = (0..row_num - 1)
 
-if option[:l] && option[:a]
+if option[:l] && option[:a] || option[:l]
   make_line(files_ordered)
-elsif option[:l]
-  make_line(files)
 else
   make_cell(rows, cols, files_ordered)
 end
