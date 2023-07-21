@@ -100,7 +100,7 @@ cols = (0..COL_NUM - 1)
 rows = (0..row_num - 1)
 
 if option[:l] && option[:a]
-  make_line(files, files_ordered)
+  make_line(files_ordered)
 elsif option[:l]
   make_line(files)
 else
