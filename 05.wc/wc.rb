@@ -7,30 +7,12 @@ opt.on('-w') { |w| option[:w] = w }
 opt.on('-c') { |c| option[:c] = c }
 argv = opt.parse(ARGV)
 
-def l(file)
-  print file.lines.count.to_s.rjust(7)
-end
-
-def w(file)
-  print file.split.size.to_s.rjust(7)
-end
-
-def c(file) 
-  print file.size.to_s.rjust(7)
-end
-
 file = File.read("#{argv[0]}")
+option_l = file.lines.count.to_s.rjust(7)
+option_w = file.split.size.to_s.rjust(7)
+option_c = file.size.to_s.rjust(7)
 
-if option[:l]
-  l(file)
-elsif option[:w]
-  w(file)
-elsif option[:c]
-  c(file)
-else
-  l(file)
-  w(file)
-  c(file)
-end
-
+print option_l if option[:l]
+print option_w if option[:w]
+print option_c if option[:c]
 print " #{argv[0]}\n"
