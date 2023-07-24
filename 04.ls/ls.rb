@@ -22,8 +22,8 @@ def make_cell(rows, cols, files_ordered)
   end
 end
 
-def block_sum(files)
-  block_num = files.sum do |file|
+def block_sum(files_ordered)
+  block_num = files_ordered.sum do |file|
     File.stat(file.to_s).blocks
   end
   puts "total #{block_num}"
@@ -72,9 +72,9 @@ def other_print(file_path, file)
   print file
 end
 
-def make_line(files)
-  block_sum(files)
-  files.each do |file|
+def make_line(files_ordered)
+  block_sum(files_ordered)
+  files_ordered.each do |file|
     if File.ftype(file.to_s) == 'directory'
       print 'd'
     else
@@ -100,7 +100,7 @@ cols = (0..COL_NUM - 1)
 rows = (0..row_num - 1)
 
 if option[:l]
-  make_line(files)
+  make_line(files_ordered)
 else
   make_cell(rows, cols, files_ordered)
 end
