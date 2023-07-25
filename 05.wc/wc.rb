@@ -15,4 +15,11 @@ option_c = file.size.to_s.rjust(7)
 print option_l if option[:l]
 print option_w if option[:w]
 print option_c if option[:c]
+
+if option == {}
+  print option_l
+  print option_w
+  print option_c
+end
+
 print " #{argv[0]}\n"
