@@ -1,7 +1,7 @@
-require 'optparse'
-require 'debug'
+# frozen_string_literal: true
 
-# debugger
+require 'optparse'
+
 opt = OptionParser.new
 option = {}
 opt.on('-l') { |l| option[:l] = l }
@@ -18,7 +18,7 @@ if argv[0] == nil
     end
     file.push("#{file_name}")
   end
-  p file = file.join
+  file = file.join
 else
   file = File.read("#{argv[0]}")
 end
