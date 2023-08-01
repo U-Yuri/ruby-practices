@@ -53,17 +53,15 @@ else
     option_w_total_num += file.split.size
     option_c_total_num += file.size
   end
-  
-  
+
   print option_l_total_num.to_s.rjust(8) if option[:l]
   print option_w_total_num.to_s.rjust(8) if option[:w]
   print option_c_total_num.to_s.rjust(8) if option[:c]
-  
+
   if option == {}
     print option_l_total_num.to_s.rjust(8)
     print option_w_total_num.to_s.rjust(8)
     print option_c_total_num.to_s.rjust(8)
   end
   print " total\n"
-
 end
