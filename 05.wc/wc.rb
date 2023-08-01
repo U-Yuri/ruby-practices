@@ -25,7 +25,6 @@ def option_or_no_option(file, option, argv)
   end
 
   print " #{argv[0]}\n"
-
 end
 
 if argv[0].nil?
@@ -49,33 +48,22 @@ else
     file = File.read(file_name)
 
     option_or_no_option(file, option, argv)
-    
+
     option_l_total_num += file.lines.count
     option_w_total_num += file.split.size
     option_c_total_num += file.size
-
   end
-
-  if option[:l]
-    print option_l_total_num.to_s.rjust(8)
-    print " total\n"
-  end
-
-  if option[:w]
-    print option_w_total_num.to_s.rjust(8)
-    print " total\n"
-  end
-
-  if option[:c]
-    print option_c_total_num.to_s.rjust(8)
-    print " total\n"
-  end
-
-  if argv.size >= 2 && option == {}
+  
+  
+  print option_l_total_num.to_s.rjust(8) if option[:l]
+  print option_w_total_num.to_s.rjust(8) if option[:w]
+  print option_c_total_num.to_s.rjust(8) if option[:c]
+  
+  if option == {}
     print option_l_total_num.to_s.rjust(8)
     print option_w_total_num.to_s.rjust(8)
     print option_c_total_num.to_s.rjust(8)
-    print " total\n"
   end
+  print " total\n"
 
 end
