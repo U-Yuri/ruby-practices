@@ -23,6 +23,10 @@ if argv[0].nil?
   option_w = file.split.size.to_s.rjust(8)
   option_c = file.size.to_s.rjust(8)
 
+  print option_l if option[:l]
+  print option_w if option[:w]
+  print option_c if option[:c]
+
   if option == {}
     print option_l
     print option_w
