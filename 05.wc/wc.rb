@@ -29,15 +29,7 @@ def option_or_no_option(files, option, argv)
 end
 
 if argv[0].nil?
-  lines = []
-  loop do
-    line = $stdin.gets
-    break if line.nil?
-
-    lines.push(line.to_s)
-  end
-  lines = lines.join
-
+  lines = $stdin.read
   option_or_no_option(lines, option, argv)
 
 else
