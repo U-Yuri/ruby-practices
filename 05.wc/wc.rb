@@ -24,7 +24,7 @@ def option_or_no_option(file, option, argv)
     print option_c
   end
 
-  print " #{argv[0]}\n"
+  puts " #{argv[0]}\n"
 end
 
 if argv[0].nil?
@@ -63,5 +63,5 @@ else
     print option_w_total_num.to_s.rjust(8)
     print option_c_total_num.to_s.rjust(8)
   end
-  print " total\n"
+  puts " total\n"
 end
