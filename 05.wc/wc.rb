@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'optparse'
+require 'debug'
 
 opt = OptionParser.new
 option = {}
@@ -28,16 +29,16 @@ def option_or_no_option(files, option, argv)
 end
 
 if argv[0].nil?
-  files = []
+  lines = []
   loop do
-    file_name = $stdin.gets
-    break if file_name.nil?
+    line = $stdin.gets
+    break if line.nil?
 
-    files.push(file_name.to_s)
+    lines.push(line.to_s)
   end
-  files = files.join
+  lines = lines.join
 
-  option_or_no_option(files, option, argv)
+  option_or_no_option(lines, option, argv)
 
 else
   option_l_total_num = 0
@@ -45,13 +46,13 @@ else
   option_c_total_num = 0
 
   argv.each do |file_name|
-    files = File.read(file_name)
+    file = File.read(file_name)
 
-    option_or_no_option(files, option, argv)
+    option_or_no_option(file, option, argv)
 
-    option_l_total_num += files.lines.count
-    option_w_total_num += files.split.size
-    option_c_total_num += files.size
+    option_l_total_num += file.lines.count
+    option_w_total_num += file.split.size
+    option_c_total_num += file.size
   end
 
   print option_l_total_num.to_s.rjust(8) if option[:l]
@@ -63,5 +64,6 @@ else
     print option_w_total_num.to_s.rjust(8)
     print option_c_total_num.to_s.rjust(8)
   end
+
   puts " total"
 end
