@@ -12,10 +12,10 @@ def main
   argv = opt.parse(ARGV)
 
   if argv[0].nil?
-    lines = $stdin.read
-    option_l = lines.lines.count
-    option_w = lines.split.size
-    option_c = lines.size
+    deta = $stdin.read
+    option_l = deta.lines.count
+    option_w = deta.split.size
+    option_c = deta.size
 
     print_count(option_l, option_w, option_c, option)
     puts " #{argv[0]}"
@@ -26,11 +26,11 @@ def main
     option_c_total_num = 0
 
     argv.each do |file_name|
-      file = File.read(file_name)
+      deta = File.read(file_name)
 
-      option_l = file.lines.count
-      option_w = file.split.size
-      option_c = file.size
+      option_l = deta.lines.count
+      option_w = deta.split.size
+      option_c = deta.size
 
       print_count(option_l, option_w, option_c, option)
       puts " #{argv[0]}"
