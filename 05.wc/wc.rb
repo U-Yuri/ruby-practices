@@ -38,13 +38,13 @@ def main
 end
 
 def option_or_no_option(files, option, argv)
-  option_l = files.lines.count.to_s.rjust(8)
-  option_w = files.split.size.to_s.rjust(8)
-  option_c = files.size.to_s.rjust(8)
+  option_l = files.lines.count
+  option_w = files.split.size
+  option_c = files.size
 
-  print option_l if option[:l] || option == {}
-  print option_w if option[:w] || option == {}
-  print option_c if option[:c] || option == {}
+  print option_l.to_s.rjust(8) if option[:l] || option == {}
+  print option_w.to_s.rjust(8) if option[:w] || option == {}
+  print option_c.to_s.rjust(8) if option[:c] || option == {}
   puts " #{argv[0]}"
 end
 
