@@ -42,16 +42,9 @@ def option_or_no_option(files, option, argv)
   option_w = files.split.size.to_s.rjust(8)
   option_c = files.size.to_s.rjust(8)
 
-  print option_l if option[:l]
-  print option_w if option[:w]
-  print option_c if option[:c]
-
-  if option == {}
-    print option_l
-    print option_w
-    print option_c
-  end
-
+  print option_l if option[:l] || option == {}
+  print option_w if option[:w] || option == {}
+  print option_c if option[:c] || option == {}
   puts " #{argv[0]}"
 end
 
