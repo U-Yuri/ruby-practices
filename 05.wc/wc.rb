@@ -30,16 +30,9 @@ def main
       option_c_total_num += file.size
     end
 
-    print option_l_total_num.to_s.rjust(8) if option[:l]
-    print option_w_total_num.to_s.rjust(8) if option[:w]
-    print option_c_total_num.to_s.rjust(8) if option[:c]
-
-    if option == {}
-      print option_l_total_num.to_s.rjust(8)
-      print option_w_total_num.to_s.rjust(8)
-      print option_c_total_num.to_s.rjust(8)
-    end
-
+    print option_l_total_num.to_s.rjust(8) if option[:l] || option == {}
+    print option_w_total_num.to_s.rjust(8) if option[:w] || option == {}
+    print option_c_total_num.to_s.rjust(8) if option[:c] || option == {}
     puts " total"
   end
 end
