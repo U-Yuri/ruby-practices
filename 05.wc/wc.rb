@@ -35,9 +35,9 @@ def main
       print_count(option_l, option_w, option_c, option)
       puts " #{argv[0]}"
 
-      option_l_total_num += file.lines.count
-      option_w_total_num += file.split.size
-      option_c_total_num += file.size
+      option_l_total_num += option_l
+      option_w_total_num += option_w
+      option_c_total_num += option_c
     end
     
     print_count(option_l_total_num, option_w_total_num, option_c_total_num, option)
