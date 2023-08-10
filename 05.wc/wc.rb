@@ -3,7 +3,7 @@
 require 'optparse'
 
 def main
-  option, argv = make_option
+  option, argv = make_options
 
   if argv[0].nil?
     count_and_print_stdin(option)
@@ -18,31 +18,31 @@ def print_count(option_l, option_w, option_c, option)
   print option_c.to_s.rjust(8) if option[:c] || option.empty?
 end
 
-def count(deta)
-  option_l = deta.lines.count
-  option_w = deta.split.size
-  option_c = deta.size
+def count(file_contents)
+  option_l = file_contents.lines.count
+  option_w = file_contents.split.size
+  option_c = file_contents.size
   [option_l, option_w, option_c]
 end
 
-def make_option
+def make_options
   opt = OptionParser.new
   option = {}
   opt.on('-l') { |l| option[:l] = l }
   opt.on('-w') { |w| option[:w] = w }
   opt.on('-c') { |c| option[:c] = c }
-  argv = opt.parse(ARGV)
-  [option, argv]
+  file_names = opt.parse(ARGV)
+  [option, file_names]
 end
 
-def count_and_print_files(argv, option)
+def count_and_print_files(file_names, option)
   option_l_total_num = 0
   option_w_total_num = 0
   option_c_total_num = 0
 
-  argv.each do |file_name|
-    deta = File.read(file_name)
-    option_l, option_w, option_c = count(deta)
+  file_names.each do |file_name|
+    file_contents = File.read(file_name)
+    option_l, option_w, option_c = count(file_contents)
     print_count(option_l, option_w, option_c, option)
     puts " #{file_name}"
     option_l_total_num += option_l
@@ -55,8 +55,8 @@ def count_and_print_files(argv, option)
 end
 
 def count_and_print_stdin(option)
-  deta = $stdin.read
-  option_l, option_w, option_c = count(deta)
+  file_contents = $stdin.read
+  option_l, option_w, option_c = count(file_contents)
   print_count(option_l, option_w, option_c, option)
   puts
 end
