@@ -6,7 +6,7 @@ def main
   option, argv = make_option
 
   if argv[0].nil?
-    count_and_print_stdin(argv, option)
+    count_and_print_stdin(option)
   else
     count_and_print_files(argv, option)
   end
@@ -18,7 +18,7 @@ def print_count(option_l, option_w, option_c, option)
   print option_c.to_s.rjust(8) if option[:c] || option.empty?
 end
 
-def count(deta, file_name, option)
+def count(deta)
   option_l = deta.lines.count
   option_w = deta.split.size
   option_c = deta.size
@@ -42,7 +42,7 @@ def count_and_print_files(argv, option)
 
   argv.each do |file_name|
     deta = File.read(file_name)
-    option_l, option_w, option_c= count(deta, file_name, option)
+    option_l, option_w, option_c = count(deta)
     print_count(option_l, option_w, option_c, option)
     puts " #{file_name}"
     option_l_total_num += option_l
@@ -54,10 +54,10 @@ def count_and_print_files(argv, option)
   puts ' total'
 end
 
-def count_and_print_stdin(argv, option)
+def count_and_print_stdin(option)
   deta = $stdin.read
-    option_l, option_w, option_c = count(deta, argv, option)
-    print_count(option_l, option_w, option_c, option)
+  option_l, option_w, option_c = count(deta)
+  print_count(option_l, option_w, option_c, option)
   puts
 end
 
