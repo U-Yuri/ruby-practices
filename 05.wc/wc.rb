@@ -3,7 +3,7 @@
 require 'optparse'
 
 def main
-  option, argv = set_option
+  option, argv = make_option
 
   if argv[0].nil?
     count_and_print_stdin(argv, option)
@@ -25,7 +25,7 @@ def a(deta, file_name, option)
   [option_l, option_w, option_c]
 end
 
-def set_option
+def make_option
   opt = OptionParser.new
   option = {}
   opt.on('-l') { |l| option[:l] = l }
