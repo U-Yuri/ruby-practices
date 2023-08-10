@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require 'debug'
 
 def main
   _opt, option, argv = set_option
