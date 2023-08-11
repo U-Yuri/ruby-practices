@@ -43,21 +43,21 @@ def print_count(option_l, option_w, option_c, option)
 end
 
 def count_and_print_files(file_names, option)
-  option_l_total_num = 0
-  option_w_total_num = 0
-  option_c_total_num = 0
+  lines_count_total = 0
+  split_count_total = 0
+  size_count_total = 0
 
   file_names.each do |file_name|
     file_contents = File.read(file_name)
     option_l, option_w, option_c = count(file_contents)
     print_count(option_l, option_w, option_c, option)
     puts " #{file_name}"
-    option_l_total_num += option_l
-    option_w_total_num += option_w
-    option_c_total_num += option_c
+    lines_count_total += option_l
+    split_count_total += option_w
+    size_count_total += option_c
   end
 
-  print_count(option_l_total_num, option_w_total_num, option_c_total_num, option)
+  print_count(lines_count_total, split_count_total, size_count_total, option)
   puts ' total'
 end
 
