@@ -12,10 +12,21 @@ def main
   end
 end
 
-def print_count(option_l, option_w, option_c, option)
-  print option_l.to_s.rjust(8) if option[:l] || option.empty?
-  print option_w.to_s.rjust(8) if option[:w] || option.empty?
-  print option_c.to_s.rjust(8) if option[:c] || option.empty?
+def make_options
+  opt = OptionParser.new
+  option = {}
+  opt.on('-l') { |l| option[:l] = l }
+  opt.on('-w') { |w| option[:w] = w }
+  opt.on('-c') { |c| option[:c] = c }
+  file_names = opt.parse(ARGV)
+  [option, file_names]
+end
+
+def count_and_print_stdin(option)
+  file_contents = $stdin.read
+  option_l, option_w, option_c = count(file_contents)
+  print_count(option_l, option_w, option_c, option)
+  puts
 end
 
 def count(file_contents)
@@ -25,14 +36,10 @@ def count(file_contents)
   [option_l, option_w, option_c]
 end
 
-def make_options
-  opt = OptionParser.new
-  option = {}
-  opt.on('-l') { |l| option[:l] = l }
-  opt.on('-w') { |w| option[:w] = w }
-  opt.on('-c') { |c| option[:c] = c }
-  file_names = opt.parse(ARGV)
-  [option, file_names]
+def print_count(option_l, option_w, option_c, option)
+  print option_l.to_s.rjust(8) if option[:l] || option.empty?
+  print option_w.to_s.rjust(8) if option[:w] || option.empty?
+  print option_c.to_s.rjust(8) if option[:c] || option.empty?
 end
 
 def count_and_print_files(file_names, option)
@@ -52,13 +59,6 @@ def count_and_print_files(file_names, option)
 
   print_count(option_l_total_num, option_w_total_num, option_c_total_num, option)
   puts ' total'
-end
-
-def count_and_print_stdin(option)
-  file_contents = $stdin.read
-  option_l, option_w, option_c = count(file_contents)
-  print_count(option_l, option_w, option_c, option)
-  puts
 end
 
 main
