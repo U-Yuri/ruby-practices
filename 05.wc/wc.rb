@@ -3,12 +3,12 @@
 require 'optparse'
 
 def main
-  option, argv = make_options
+  option, file_names = make_options
 
-  if argv[0].nil?
+  if file_names[0].nil?
     count_and_print_stdin(option)
   else
-    count_and_print_files(argv, option)
+    count_and_print_files(file_names, option)
   end
 end
 
