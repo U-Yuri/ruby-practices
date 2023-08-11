@@ -6,7 +6,7 @@ def main
   option, file_names = parse_options
 
   if file_names[0].nil?
-    count_and_print_stdin(option)
+    print_counts_for_stdin(option)
   else
     count_and_print_files(file_names, option)
   end
@@ -22,7 +22,7 @@ def parse_options
   [option, file_names]
 end
 
-def count_and_print_stdin(option)
+def print_counts_for_stdin(option)
   file_contents = $stdin.read
   option_l, option_w, option_c = count(file_contents)
   print_count(option_l, option_w, option_c, option)
