@@ -23,16 +23,16 @@ def parse_options
 end
 
 def print_counts_for_stdin(option)
-  file_contents = $stdin.read
-  option_l, option_w, option_c = count(file_contents)
+  file_content = $stdin.read
+  option_l, option_w, option_c = count(file_content)
   print_count(option_l, option_w, option_c, option)
   puts
 end
 
-def count(file_contents)
-  option_l = file_contents.lines.count
-  option_w = file_contents.split.size
-  option_c = file_contents.size
+def count(file_content)
+  option_l = file_content.lines.count
+  option_w = file_content.split.size
+  option_c = file_content.size
   [option_l, option_w, option_c]
 end
 
@@ -48,8 +48,8 @@ def count_and_print_files(file_names, option)
   size_count_total = 0
 
   file_names.each do |file_name|
-    file_contents = File.read(file_name)
-    option_l, option_w, option_c = count(file_contents)
+    file_content = File.read(file_name)
+    option_l, option_w, option_c = count(file_content)
     print_count(option_l, option_w, option_c, option)
     puts " #{file_name}"
     lines_count_total += option_l
