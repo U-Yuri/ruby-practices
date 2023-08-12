@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'optparse'
+require 'debug'
 
 def main
+  # debugger
   option, file_names = parse_options
 
   if file_names[0].nil?
@@ -57,8 +59,10 @@ def count_and_print_files(file_names, option)
     size_count_total += option_c
   end
 
-  print_count(lines_count_total, split_count_total, size_count_total, option)
-  puts ' total'
+  if file_names.size >= 2
+    print_count(lines_count_total, split_count_total, size_count_total, option)
+    puts ' total'
+  end
 end
 
 main
