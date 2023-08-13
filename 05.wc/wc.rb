@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require 'debug'
 
 def main
-  # debugger
   option, file_names = parse_options
 
   if file_names[0].nil?
@@ -38,9 +36,13 @@ def count(file_content)
 end
 
 def print_count(option_l, option_w, option_c, option, file_name)
-  print option_l.to_s.rjust(8) if option[:l] || option.empty?
-  print option_w.to_s.rjust(8) if option[:w] || option.empty?
-  print option_c.to_s.rjust(8) if option[:c] || option.empty?
+  counts = []
+  counts.push(option_l) if option[:l] || option.empty?
+  counts.push(option_w) if option[:w] || option.empty?
+  counts.push(option_c) if option[:c] || option.empty?
+  counts.each do |count|
+    print count.to_s.rjust(8)
+  end
   puts " #{file_name}"
 end
 
