@@ -48,19 +48,19 @@ end
 
 def count_and_print_files(file_names, option)
   lines_total = 0
-  split_total = 0
-  sizet_total = 0
+  word_total = 0
+  byte_total = 0
 
   file_names.each do |file_name|
     file_content = File.read(file_name)
     line_count, word_count, byte = count(file_content)
     print_count(line_count, word_count, byte, option, file_name)
     lines_total += line_count
-    split_total += word_count
-    sizet_total += byte
+    word_total += word_count
+    byte_total += byte
   end
 
-  print_count(lines_total, split_total, sizet_total, option, 'total') if file_names.size >= 2
+  print_count(lines_total, word_total, byte_total, option, 'total') if file_names.size >= 2
 end
 
 main
