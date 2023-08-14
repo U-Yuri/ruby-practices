@@ -47,20 +47,20 @@ def print_count(option_l, option_w, option_c, option, file_name)
 end
 
 def count_and_print_files(file_names, option)
-  lines_count_total = 0
-  split_count_total = 0
-  size_count_total = 0
+  lines_total = 0
+  split_total = 0
+  sizet_total = 0
 
   file_names.each do |file_name|
     file_content = File.read(file_name)
     option_l, option_w, option_c = count(file_content)
     print_count(option_l, option_w, option_c, option, file_name)
-    lines_count_total += option_l
-    split_count_total += option_w
-    size_count_total += option_c
+    lines_total += option_l
+    split_total += option_w
+    sizet_total += option_c
   end
 
-  print_count(lines_count_total, split_count_total, size_count_total, option, 'total') if file_names.size >= 2
+  print_count(lines_total, split_total, sizet_total, option, 'total') if file_names.size >= 2
 end
 
 main
