@@ -24,21 +24,21 @@ end
 
 def print_counts_for_stdin(option)
   file_content = $stdin.read
-  line, word, byte = count(file_content)
-  print_count(line, word, byte, option, '')
+  line_count, word_count, byte = count(file_content)
+  print_count(line_count, word_count, byte, option, '')
 end
 
 def count(file_content)
-  line = file_content.lines.count
-  word = file_content.split.size
+  line_count = file_content.lines.count
+  word_count = file_content.split.count
   byte = file_content.size
-  [line, word, byte]
+  [line_count, word_count, byte]
 end
 
-def print_count(line, word, byte, option, file_name)
+def print_count(line_count, word_count, byte, option, file_name)
   counts = []
-  counts.push(line) if option[:l] || option.empty?
-  counts.push(word) if option[:w] || option.empty?
+  counts.push(line_count) if option[:l] || option.empty?
+  counts.push(word_count) if option[:w] || option.empty?
   counts.push(byte) if option[:c] || option.empty?
   counts.each do |count|
     print count.to_s.rjust(8)
@@ -53,10 +53,10 @@ def count_and_print_files(file_names, option)
 
   file_names.each do |file_name|
     file_content = File.read(file_name)
-    line, word, byte = count(file_content)
-    print_count(line, word, byte, option, file_name)
-    lines_total += line
-    split_total += word
+    line_count, word_count, byte = count(file_content)
+    print_count(line_count, word_count, byte, option, file_name)
+    lines_total += line_count
+    split_total += word_count
     sizet_total += byte
   end
 
