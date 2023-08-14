@@ -24,22 +24,22 @@ end
 
 def print_counts_for_stdin(option)
   file_content = $stdin.read
-  option_l, option_w, option_c = count(file_content)
-  print_count(option_l, option_w, option_c, option, '')
+  line, word, byte = count(file_content)
+  print_count(line, word, byte, option, '')
 end
 
 def count(file_content)
-  option_l = file_content.lines.count
-  option_w = file_content.split.size
-  option_c = file_content.size
-  [option_l, option_w, option_c]
+  line = file_content.lines.count
+  word = file_content.split.size
+  byte = file_content.size
+  [line, word, byte]
 end
 
-def print_count(option_l, option_w, option_c, option, file_name)
+def print_count(line, word, byte, option, file_name)
   counts = []
-  counts.push(option_l) if option[:l] || option.empty?
-  counts.push(option_w) if option[:w] || option.empty?
-  counts.push(option_c) if option[:c] || option.empty?
+  counts.push(line) if option[:l] || option.empty?
+  counts.push(word) if option[:w] || option.empty?
+  counts.push(byte) if option[:c] || option.empty?
   counts.each do |count|
     print count.to_s.rjust(8)
   end
@@ -53,11 +53,11 @@ def count_and_print_files(file_names, option)
 
   file_names.each do |file_name|
     file_content = File.read(file_name)
-    option_l, option_w, option_c = count(file_content)
-    print_count(option_l, option_w, option_c, option, file_name)
-    lines_total += option_l
-    split_total += option_w
-    sizet_total += option_c
+    line, word, byte = count(file_content)
+    print_count(line, word, byte, option, file_name)
+    lines_total += line
+    split_total += word
+    sizet_total += byte
   end
 
   print_count(lines_total, split_total, sizet_total, option, 'total') if file_names.size >= 2
