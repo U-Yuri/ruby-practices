@@ -5,7 +5,7 @@ require 'optparse'
 def main
   option, file_names = parse_options
 
-  if file_names[0].nil?
+  if file_names.empty?
     print_counts_for_stdin(option)
   else
     count_and_print_files(file_names, option)
