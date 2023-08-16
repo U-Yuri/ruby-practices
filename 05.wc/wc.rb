@@ -24,7 +24,10 @@ end
 
 def print_counts_for_stdin(option)
   file_content = $stdin.read
-  line_count, word_count, byte = count(file_content)
+  count = count(file_content)
+  line_count = count[:line_count]
+  word_count = count[:word_count]
+  byte = count[:word_count]
   print_count(line_count, word_count, byte, option, '')
 end
 
@@ -32,7 +35,12 @@ def count(file_content)
   line_count = file_content.lines.count
   word_count = file_content.split.count
   byte = file_content.size
-  [line_count, word_count, byte]
+  {
+    line_count: line_count, 
+    word_count: word_count, 
+    byte: byte,
+  }
+
 end
 
 def print_count(line_count, word_count, byte, option, file_name)
@@ -53,7 +61,10 @@ def count_and_print_files(file_names, option)
 
   file_names.each do |file_name|
     file_content = File.read(file_name)
-    line_count, word_count, byte = count(file_content)
+    count = count(file_content)
+    line_count = count[:line_count]
+    word_count = count[:word_count]
+    byte = count[:word_count]
     print_count(line_count, word_count, byte, option, file_name)
     lines_total += line_count
     word_total += word_count
