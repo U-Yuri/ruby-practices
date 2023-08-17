@@ -24,11 +24,11 @@ end
 
 def print_counts_for_stdin(option)
   file_content = $stdin.read
-  count = count(file_content)
-  line_count = count[:line_count]
-  word_count = count[:word_count]
-  byte = count[:word_count]
-  print_count(line_count, word_count, byte, option, '')
+  count_content = count(file_content)
+  line_count = count_content[:line_count]
+  word_count = count_content[:word_count]
+  byte = count_content[:byte]
+  print_count(count_content, option, '')
 end
 
 def count(file_content)
@@ -40,10 +40,13 @@ def count(file_content)
     word_count: word_count, 
     byte: byte,
   }
-
 end
 
-def print_count(line_count, word_count, byte, option, file_name)
+def print_count(count_content, option, file_name)
+  line_count = count_content[:line_count]
+  word_count = count_content[:word_count]
+  byte = count_content[:byte]
+  
   counts = []
   counts.push(line_count) if option[:l] || option.empty?
   counts.push(word_count) if option[:w] || option.empty?
@@ -61,17 +64,23 @@ def count_and_print_files(file_names, option)
 
   file_names.each do |file_name|
     file_content = File.read(file_name)
-    count = count(file_content)
-    line_count = count[:line_count]
-    word_count = count[:word_count]
-    byte = count[:word_count]
-    print_count(line_count, word_count, byte, option, file_name)
+    count_content = count(file_content)
+    line_count = count_content[:line_count]
+    word_count = count_content[:word_count]
+    byte = count_content[:byte]
+    print_count( count_content,option, file_name)
     lines_total += line_count
     word_total += word_count
     byte_total += byte
   end
+  total_counts = 
+  {
+    line_count: lines_total,
+    word_count: word_total,
+    byte: byte_total,
+  }
 
-  print_count(lines_total, word_total, byte_total, option, 'total') if file_names.size >= 2
+  print_count(total_counts, option, 'total') if file_names.size >= 2
 end
 
 main
