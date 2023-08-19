@@ -29,13 +29,10 @@ def print_counts_for_stdin(option)
 end
 
 def count(file_content)
-  line_count = file_content.lines.count
-  word_count = file_content.split.count
-  byte = file_content.size
   {
-    line_count:,
-    word_count:,
-    byte:
+    line_count: file_content.lines.count,
+    word_count: file_content.split.count,
+    byte: file_content.size
   }
 end
 
