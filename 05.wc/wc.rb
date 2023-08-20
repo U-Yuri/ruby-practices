@@ -30,15 +30,15 @@ end
 
 def count(file_content)
   {
-    line_count: file_content.lines.count,
-    word_count: file_content.split.count,
+    line: file_content.lines.count,
+    word: file_content.split.count,
     byte: file_content.size
   }
 end
 
 def print_count(count_content, option, file_name)
-  line_count = count_content[:line_count]
-  word_count = count_content[:word_count]
+  line_count = count_content[:line]
+  word_count = count_content[:word]
   byte = count_content[:byte]
 
   counts = []
@@ -60,13 +60,13 @@ def count_and_print_files(file_names, option)
     file_content = File.read(file_name)
     count_content = count(file_content)
     print_count(count_content, option, file_name)
-    lines_total += count_content[:line_count]
-    word_total += count_content[:word_count]
+    lines_total += count_content[:line]
+    word_total += count_content[:word]
     byte_total += count_content[:byte]
   end
   total_counts = {
-    line_count: lines_total,
-    word_count: word_total,
+    line: lines_total,
+    word: word_total,
     byte: byte_total
   }
 
