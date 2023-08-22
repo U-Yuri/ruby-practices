@@ -54,26 +54,18 @@ def print_count(count_content, option)
 end
 
 def count_and_print_files(file_names, option)
-  lines_total = 0
-  word_total = 0
-  byte_total = 0
-
+  total = Hash.new(0)
+  total[:file_name] = 'total'
   file_names.each do |file_name|
     file_content = File.read(file_name)
     count_content = count(file_content, file_name)
     print_count(count_content, option)
-    lines_total += count_content[:line]
-    word_total += count_content[:word]
-    byte_total += count_content[:byte]
+    total[:line] += count_content[:line]
+    total[:word] += count_content[:word]
+    total[:byte] += count_content[:byte]
   end
-  total_counts = {
-    line: lines_total,
-    word: word_total,
-    byte: byte_total,
-    file_name: 'total'
-  }
 
-  print_count(total_counts, option) if file_names.size >= 2
+  print_count(total, option) if file_names.size >= 2
 end
 
 main
